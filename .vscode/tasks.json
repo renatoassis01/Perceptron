@@ -1,0 +1,10 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    // see https://medium.com/@piyushchauhan/debugging-c-and-c-with-vscode-77dae50eaf7f#.9i02s6gql
+	"version": "0.1.0",
+    "command": "g++",
+    "isShellCommand": true,
+    "args": ["-o","main","main.cpp"],
+    "showOutput": "always"
+}
