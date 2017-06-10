@@ -11,18 +11,18 @@
 
 using namespace std;
 
-#define NUMENT          2	     // numero de entradas da rede.
+#define NUMENT          3	     // numero de entradas da rede.
 #define NUMLIN          10	     // numero de linhas da matriz de entradas.
 #define NUMCOL          3	     // numero de colunas da matriz de entradas.
-#define NUMITE          300          // numero de iteracoes com erro menor que ERRO
-#define BETA            0.01	     // fator de ajuste das correcoes (taxa de aprendizado).
+#define NUMITE          300      // numero de iteracoes com erro menor que ERRO
+#define BETA            0.05	 // fator de ajuste das correcoes (taxa de aprendizado).
 #define ERRO            0.0001
 
 FILE *Arq;
 double W[NUMENT];
 double X[NUMLIN][NUMCOL] = {
 /*{0.9,0.25,0},
-{0.666666667,0.15,0},
+
 {0.833333333,0.55,1},
 {0.866666667,0.63,1},
 {0.166666667,0.2,0},
@@ -32,11 +32,17 @@ double X[NUMLIN][NUMCOL] = {
 {0.6,0.46,0},
 {0.233333333,1,1}};
 */
-{1,1,2},
 {2,2,4},
-{3,3,6},
-{4,4,8},
-{5,5,10}};
+{8,8,16},
+{32,32,64},
+{84,84,168},
+{15,15,30},
+{5,5,10},
+{8,8,16},
+{5,7,12},
+{5,8,13},
+{5,9,14}
+};
 
 
 /*********************************************************************************/
@@ -105,6 +111,7 @@ void Treinar (void)
   i = 0;
   while(Erro > ERRO)
   {
+    fprintf(Arq,"\nErro = %f na linha %i",Erro,Linha);
     Linha = i%NUMLIN;
     Soma = Somatorio(Linha);
     Atualiza_Pesos(Soma,Linha);
